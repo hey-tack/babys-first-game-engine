@@ -13,7 +13,7 @@ Built using the following tools
  
 # Running the project
  
-This project is in its earliest possible stages of infancy, and as of this moment I have no plans to expand it beyond the point at which it no longer supplements a useful or interesting experience for me. So I will not be accepting pull requests into this repository, however you are free to pull it down and do whatever you want with it. 
+_This project is in its earliest possible stages of infancy, and as of this moment I have no plans to expand it beyond the point at which it no longer supplements a useful or interesting experience for me. So I will not be accepting pull requests into this repository, however you are free to pull it down and do whatever you want with it._
 
 Essentially, all you should need to do is install VS Code for your platform, pull down the repo, open VS Code in the folder of the project, and hit F5. 
 
