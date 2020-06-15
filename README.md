@@ -1,6 +1,6 @@
 # Baby's First Game Engine
 
-My first attempt at a simple game engine in .NET Core, mostly supplemented by the material in [C# Game Programming for Serious Game Creation, by Daniel Schuller](https://www.amazon.com/Game-Programming-Serious-Creation/dp/1435455568).
+My first attempt at a simple game engine in .NET Core, mostly supplemented by the material found in [C# Game Programming for Serious Game Creation, by Daniel Schuller](https://www.amazon.com/Game-Programming-Serious-Creation/dp/1435455568).
 
 Currently depends on the following technologies 
  - [.NET Core](https://github.com/dotnet/core)
