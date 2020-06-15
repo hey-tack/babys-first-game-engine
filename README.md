@@ -3,12 +3,12 @@
 My first attempt at a simple game engine in .NET Core, mostly supplemented by the material in [C# Game Programming for Serious Game Creation, by Daniel Schuller](https://www.amazon.com/Game-Programming-Serious-Creation/dp/1435455568).
 
 Currently depends on the following technologies 
- - [.NET Core 3.1](https://docs.microsoft.com/en-us/dotnet/core/)
- - [OpenTK](https://opentk.net/)
- - [NUnit](https://nunit.org/)
+ - [.NET Core](https://github.com/dotnet/core)
+ - [OpenTK](https://github.com/opentk/opentk)
+ - [NUnit](https://github.com/nunit)
  
 Currently being built on [Windows 10](https://en.wikipedia.org/wiki/Windows_10) with the following tools
- - [VS Code](https://code.visualstudio.com/)
+ - [VS Code](https://github.com/microsoft/vscode)
  
 # Running the project
  
