@@ -13,6 +13,7 @@ class Game : GameWindow
         {
             // Load textures
             _textureManager.LoadTexture("penguin", "Images/penguin.png");
+            _textureManager.LoadTexture("font", "Fonts/Arial/font.png");
 
             // Add all states that will be used
             _system.AddState("splash", new SplashScreenState(_system));
@@ -21,9 +22,11 @@ class Game : GameWindow
             _system.AddState("playing", new PlayingGameState());
             _system.AddState("sprite_test", new DrawSpriteState(_textureManager));
             _system.AddState("new_sprite_test", new TestSpriteClassState(_textureManager));
+            _system.AddState("text_test_state", new TextTestState(_textureManager));
+            _system.AddState("fps_test_state", new FPSTestState(_textureManager));
 
             // select the start state
-            _system.ChangeState("new_sprite_test");
+            _system.ChangeState("fps_test_state");
 
             // Setup orthographic view
             Setup2DGraphics(ClientSize.Width, ClientSize.Height);
