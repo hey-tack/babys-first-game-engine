@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using GameStructure;
 
@@ -7,6 +8,20 @@ public class Font {
     public Font(Texture texture, Dictionary<char, CharacterData> characterData) {
         _texture = texture;
         _characterData = characterData;
+    }
+
+    public Vector MeasureFont(string text) {
+        return MeasureFont(text, -1);
+    }
+
+    public Vector MeasureFont(string Text, double maxWidth) {
+        Vector dimensions = new Vector();
+        foreach(char c in Text) {
+            CharacterData data = _characterData[c];
+            dimensions.X += data.XAdvance;
+            dimensions.Y = Math.Max(dimensions.Y, data.Height = data.YOffset);
+        }
+        return dimensions;
     }
 
     public CharacterSprite CreateSprite(char c) {
