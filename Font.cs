@@ -19,7 +19,7 @@ public class Font {
         foreach(char c in Text) {
             CharacterData data = _characterData[c];
             dimensions.X += data.XAdvance;
-            dimensions.Y = Math.Max(dimensions.Y, data.Height = data.YOffset);
+            dimensions.Y = Math.Max(dimensions.Y, data.Height + data.YOffset);
         }
         return dimensions;
     }
