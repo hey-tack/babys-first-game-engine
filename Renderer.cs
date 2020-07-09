@@ -2,6 +2,8 @@ using OpenTK.Graphics.OpenGL;
 
 namespace GameStructure {
     public class Renderer {
+        Batch _batch = new Batch();
+
         public Renderer() {
             GL.Enable(EnableCap.Texture2D);
             GL.Enable(EnableCap.Blend);
@@ -15,16 +17,11 @@ namespace GameStructure {
         }
 
         public void DrawSprite(Sprite sprite) {
-            GL.Begin(PrimitiveType.Triangles);
-            {
-                for (int i = 0; i < Sprite.VertexAmount; i++) {
-                    DrawImmediateModeVertex(
-                        sprite.VertexPositions[i],
-                        sprite.VertexColors[i],
-                        sprite.VertexUVs[i]);
-                }
-            }
-            GL.End();
+            _batch.AddSprite(sprite);
+        }
+
+        public void Render() {
+            _batch.Draw();
         }
 
         public void DrawText(Text text) {
@@ -32,5 +29,7 @@ namespace GameStructure {
                 DrawSprite(c.Sprite);
             }
         }
+
+
     }
 }

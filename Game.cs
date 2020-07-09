@@ -24,9 +24,11 @@ class Game : GameWindow
             _system.AddState("new_sprite_test", new TestSpriteClassState(_textureManager));
             _system.AddState("text_test_state", new TextTestState(_textureManager));
             _system.AddState("fps_test_state", new FPSTestState(_textureManager));
+            _system.AddState("wave_graph_state", new WaveformGraphState());
+            _system.AddState("special_eff_state", new SpecialEffectState(_textureManager));
 
             // select the start state
-            _system.ChangeState("fps_test_state");
+            _system.ChangeState("special_eff_state");
 
             // Setup orthographic view
             Setup2DGraphics(ClientSize.Width, ClientSize.Height);

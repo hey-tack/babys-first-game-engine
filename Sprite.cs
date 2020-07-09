@@ -93,5 +93,9 @@ namespace GameStructure {
                 _vertexPositions[0].Y - halfHeight,
                 _vertexPositions[0].Z);
         }
+
+        public Vector GetPosition() {
+            return GetCenter();
+        }
     }
 }

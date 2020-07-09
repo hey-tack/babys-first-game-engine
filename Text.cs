@@ -1,16 +1,25 @@
 using System;
 using System.Collections.Generic;
 
+// TODO: 
+    // - Account for new line & tab characters
+    // - Allow scaling
+
 public class Text {
     Font _font;
     List<CharacterSprite> _bitmapText = new List<CharacterSprite>();
     string _text;
-    Color _color;
+    Color _color = new Color(1,1,1,1); // Just default to white for now.
     Vector _dimensions;
     int _maxWidth;
     
     public double Width {
-        get { return _dimensions.X; }
+        get { 
+            if (_maxWidth != -1) {
+                return _maxWidth;
+            }
+            return _dimensions.X; 
+        }
     }
 
     public double Height {
@@ -53,8 +62,8 @@ public class Text {
 
     private void CreateText(double x, double y, double maxWidth) {
         _bitmapText.Clear();
-        double currentX = x;
-        double currentY = y;
+        double currentX = 0;
+        double currentY = 0;
         string[] words = _text.Split(' ');
         foreach (string word in words) {
             Vector nextWordLength = _font.MeasureFont(word);
