@@ -2,11 +2,13 @@ using System;
 using GameStructure;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Input;
 
 class Game : GameWindow
     {
         StateSystem _system = new StateSystem();
         TextureManager _textureManager = new TextureManager();
+        Input _input = new Input();
         double deltaTime = 0.0f;
 
         public Game(int width, int height) : base(width, height) 
@@ -26,9 +28,10 @@ class Game : GameWindow
             _system.AddState("fps_test_state", new FPSTestState(_textureManager));
             _system.AddState("wave_graph_state", new WaveformGraphState());
             _system.AddState("special_eff_state", new SpecialEffectState(_textureManager));
+            _system.AddState("circle", new CircleIntersectionState(_input));
 
             // select the start state
-            _system.ChangeState("special_eff_state");
+            _system.ChangeState("circle");
 
             // Setup orthographic view
             Setup2DGraphics(ClientSize.Width, ClientSize.Height);
@@ -42,6 +45,8 @@ class Game : GameWindow
 
         protected override void OnUpdateFrame(FrameEventArgs e) {
             base.OnUpdateFrame(e);
+
+            UpdateInput();
 
             deltaTime = e.Time;
             _system.Update(deltaTime);
@@ -73,5 +78,17 @@ class Game : GameWindow
             GL.Ortho(-halfWidth, halfWidth, -halfHeight, halfHeight, -100, 100);
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadIdentity();
+        }
+
+        private void UpdateInput() {
+            MouseState mouseState = Mouse.GetCursorState();
+            OpenTK.Point mousePos = this.PointToClient(new OpenTK.Point(mouseState.X, mouseState.Y));
+        
+            // Now use our point definition
+            Point adjustedMousePoint = new Point();
+            adjustedMousePoint.X = (float)mousePos.X - ((float)ClientSize.Width / 2);
+            adjustedMousePoint.Y = ((float)ClientSize.Height / 2) - (float)mousePos.Y;
+
+            _input.MousePosition = new Point(adjustedMousePoint.X, adjustedMousePoint.Y);
         }
     }
