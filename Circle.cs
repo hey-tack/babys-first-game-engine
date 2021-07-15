@@ -4,9 +4,9 @@ using OpenTK.Graphics.OpenGL;
 public class Circle {
     Color _color = new Color(1,1,1,1);
 
-    Vector Position { get; set; }
-    double Radius { get; set; }
-    Color color { 
+    public Vector Position { get; set; }
+    public double Radius { get; set; }
+    public Color Color { 
         get { return _color; } 
         set { _color = value; } 
     }
@@ -39,5 +39,18 @@ public class Circle {
             }
         }
         GL.End();
+    }
+
+    public bool Intersects(Point point) {
+        // Change point to vector
+        Vector vPoint = new Vector(point.X, point.Y, 0);
+        Vector vFromCircleToPoint = Position - vPoint;
+        double distance = vFromCircleToPoint.Length();
+
+        if (distance > Radius) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

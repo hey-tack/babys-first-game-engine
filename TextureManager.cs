@@ -16,7 +16,9 @@ public class TextureManager {
         int openGlId = GL.GenTexture();
 
         BitmapData bmpData = bitmap.LockBits(
-            new Rectangle(0,0, bitmap.Width, bitmap.Height),
+            // Side note, I had to explicitly specify this type after
+            // creating our custom Rectangle class. So watch for that.
+            new System.Drawing.Rectangle(0,0, bitmap.Width, bitmap.Height),
             ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
         GL.BindTexture(TextureTarget.Texture2D, openGlId);
