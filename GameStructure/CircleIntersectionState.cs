@@ -13,6 +13,11 @@ class CircleIntersectionState: IGameObject {
 
     public void Update(double deltaTime)
     {
+        if (_circle.Intersects(_input.MousePosition)) {
+            _circle.Color = new Color(1, 0, 0, 1);
+        } else {
+            _circle.Color = new Color(1, 1, 1, 1);
+        }
     }
 
     public void Render()
@@ -21,7 +26,7 @@ class CircleIntersectionState: IGameObject {
         GL.Clear(ClearBufferMask.ColorBufferBit);
         _circle.Draw();
 
-        // Draw
+        // Draw the mouse cursor as a point
         GL.PointSize(5);
         GL.Begin(PrimitiveType.Points);
         {

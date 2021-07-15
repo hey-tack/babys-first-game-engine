@@ -28,14 +28,14 @@ class Game : GameWindow
             _system.AddState("fps_test_state", new FPSTestState(_textureManager));
             _system.AddState("wave_graph_state", new WaveformGraphState());
             _system.AddState("special_eff_state", new SpecialEffectState(_textureManager));
-            _system.AddState("circle", new CircleIntersectionState(_input));
+            _system.AddState("circle_intersect", new CircleIntersectionState(_input));
+            _system.AddState("rectangle_intersect", new RectangleIntersectionState(_input));
 
             // select the start state
-            _system.ChangeState("circle");
+            _system.ChangeState("rectangle_intersect");
 
             // Setup orthographic view
             Setup2DGraphics(ClientSize.Width, ClientSize.Height);
-
         }
 
         protected override void OnLoad(System.EventArgs e)
